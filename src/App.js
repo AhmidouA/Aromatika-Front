@@ -1,5 +1,10 @@
-import React from 'react';
+// import React
+import React,{ Fragment} from 'react';
+
+// Router react-router-dom
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Component
 import Login from './pages/Login';
 import Main from './pages/Main';
 import UserProfile from './pages/UserProfile';
@@ -14,7 +19,6 @@ import Error from './pages/ErrorPage';
 
 function App() {
   return (
-    <>
       <div className='app'>
         <Router>
           <Routes>
@@ -32,7 +36,6 @@ function App() {
           </Routes>
         </Router>
       </div>
-    </>
   );
 }
 
