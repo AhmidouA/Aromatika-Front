@@ -1,0 +1,132 @@
+// CSS POUR MOBILE
+.Error {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    margin: 4rem auto 0;
+
+    &-header {
+        display: flex;
+        flex-direction: column;
+
+        &-title {
+            font-size: 5rem;
+            word-break: break-all;
+            padding-bottom: 5%;
+        }
+
+        &-info {
+            font-size: 2.5rem;
+            padding-bottom: 10%;
+
+            &-code {
+                font-size: 1.5rem;
+            }
+        }
+
+        &-redirect {
+            font-size: 1.5rem;
+
+            &-link {
+                text-decoration: none;
+                color: #008f77;
+                font-size: 3rem;
+            }
+        }
+    }
+
+    &-icon {
+        display: flex;
+        flex-direction: column;
+        padding: 3rem;
+
+        &-smoke {
+            min-width: 10rem;
+            max-width: 20rem;
+            height: auto;
+            rotate: 30deg;
+            margin-left: 4rem;
+            color: #008f77;
+        }
+
+        &-poison {
+            min-width: 25rem;
+            max-width: 50rem;
+            height: auto;
+            align-self: flex-end;
+            color: #6D071A;
+        }
+    }
+}
+
+// CSS for medium devices (landscape tablets, 768px and up)
+@media only screen and (min-width: 768px) {
+    .Error {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: row;
+        gap: 15%;
+        padding: 3rem;
+        margin: 4rem auto 0;
+
+        &-header {
+            display: flex;
+            flex-direction: column;
+
+            &-title {
+                font-size: 15rem;
+                word-break: break-all;
+            }
+
+            &-info {
+                font-size: 5rem;
+                padding-bottom: 25%;
+
+                &-code {
+                    font-size: 3.5rem;
+                }
+            }
+
+            &-redirect {
+                font-size: 3.5rem;
+
+                &-link {
+                    text-decoration: none;
+                    color: #008f77;
+                    font-size: 5rem;
+                    transition: all .2s ease-in-out;
+
+                    &:hover {
+                        display: inline-block; // Le scale ne peut fonctionner qu'avec un élément block
+                        transform: scale(1.5);
+                    }
+                }
+            }
+        }
+
+        &-icon {
+            display: flex;
+            flex-direction: column;
+            padding: 3rem;
+
+            &-smoke {
+                min-width: 30rem;
+                max-width: 80rem;
+                height: auto;
+                rotate: 30deg;
+                align-self: flex-start;
+                margin-right: auto;
+                margin-left: -3rem;
+                color: #008f77;
+            }
+
+            &-poison {
+                min-width: 50rem;
+                max-width: 100rem;
+                height: auto;
+                align-self: flex-end;
+                color: #6D071A;
+            }
+        }
+    }
+}

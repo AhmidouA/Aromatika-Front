@@ -1,0 +1,179 @@
+// CSS pour mobile
+.About {
+    padding: 3rem;
+    margin: 4rem auto 0;
+
+    &-border {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        border: 2px solid #fff;
+        border-radius: 3px;
+        background-color: #fff;
+    }
+
+    &-profile {
+        &-left {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &-description {
+                &-container {
+                    padding: 1rem;
+                }
+
+                &-name {
+                    text-transform: uppercase;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                &-role {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                &-resume {
+                    text-align: justify;
+                }
+            }
+        }
+
+        &-right {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &-description {
+                &-container {
+                    padding: 1rem;
+                }
+
+                &-name {
+                    text-transform: uppercase;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                &-role {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                &-resume {
+                    text-align: justify;
+                }
+            }
+        }
+
+        &-avatar {
+            height: 100%;
+            border-radius: 5px;
+            height: 25vh;
+            width: 25vh;
+        }
+    }
+}
+
+// CSS for medium devices (landscape tablets, 768px and up)
+@media only screen and (min-width: 768px) {
+    .About {
+        padding: 3rem;
+        margin: 4rem auto 0;
+
+        &-border {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 2rem;
+            border: 2px solid #fff;
+            border-radius: 6px;
+            background-color: #fff;
+        }
+
+        &-profile {
+            &-left {
+                display: flex;
+                flex-direction: row;
+                padding: 1rem;
+
+                &:hover {
+                    box-shadow: 0px 0px 10px rgba(186, 128, 153, 0.4);
+                    border-radius: 6px;
+                    transition: box-shadow 0.4s ease-in-out;
+                }
+
+                &-description {
+                    &-container {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 1rem;
+                    }
+
+                    &-name {
+                        display: flex;
+                        align-items: stretch;
+                        text-transform: uppercase;
+                    }
+
+                    &-role {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: stretch;
+                    }
+                }
+            }
+
+            &-right {
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: stretch;
+                padding: 1rem;
+
+                &:hover {
+                    box-shadow: 0px 0px 10px rgba(186, 128, 153, 0.4);
+                    border-radius: 6px;
+                    transition: box-shadow 0.4s ease-in-out;
+                }
+
+                &-description {
+                    &-container {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 1rem;
+                    }
+
+                    &-name {
+                        text-transform: uppercase;
+                        display: flex;
+                        flex-direction: row-reverse;
+                    }
+
+                    &-role {
+                        display: flex;
+                        flex-direction: row-reverse;
+                    }
+
+                    &-resume {
+                        text-align: end;
+                    }
+                }
+            }
+
+            &-avatar {
+                height: 100%;
+                border-radius: 5px;
+                height: 25vh;
+                width: 25vh;
+            }
+        }
+    }
+}

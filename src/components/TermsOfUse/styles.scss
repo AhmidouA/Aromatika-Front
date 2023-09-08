@@ -1,0 +1,87 @@
+/* Pour les ordinateurs portables (portrait et paysage) */
+@media only screen and (min-width:781px) and (max-width: 3000px) {
+
+    .termsOfUse {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 var(--gap-xl) var(--gap-lg);
+        border-radius: 5px;
+
+        &-title {
+
+            text-align: center;
+            padding-top: var(--gap-lg);
+        }
+
+        &-part1 {
+
+            display: flex;
+            justify-content: space-between;
+            width: 100vw;
+
+            &-figure {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                text-align: justify;
+                padding-right: var(--gap-xl);
+                width: 70%;
+
+                align-items: center;
+                justify-content: space-between;
+                height: 90vh;
+                width: 20%;
+
+                &-img1,
+                &-img2,
+                &-img3 {
+                    height: 100%;
+                    border-radius: 5px;
+                    height: 25vh;
+                    width: 25vh;
+                }
+
+            }
+
+            &-figure2 {
+                display: none;
+            }
+
+            &-text {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                text-align: justify;
+                padding-right: var(--gap-xl);
+                width: 70%;
+
+                &-subtitle {
+                    text-decoration: underline;
+                }
+
+            }
+
+            &-text {
+                background-color: #fff;
+                border-radius: 5px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                text-align: justify;
+                padding: var(--gap-xl);
+                width: 80%;
+
+
+                &-subtitle {
+                    text-decoration: underline;
+                }
+
+                &-subtitle2 {
+                    padding: var(--gap-lg) 0 0 0;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,220 @@
+// CSS for mobile
+@media only screen and (max-width: 1299px) {
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .Footer {
+    width: 100vw;
+    height: 15vh;
+    background-color: #fff;
+    display: flex; // pour que les items du container soient en ligne et non en colonne
+    justify-content: space-between;
+
+    &-links {
+      display: flex;
+      width: 100%;
+      align-items: flex start;
+    }
+
+    &-title,
+    &-map,
+    &-about {
+      display: none;
+    }
+
+    &-about-mobile {
+      flex-grow: 1; // Pour que les différents items prennent la totalité de la place horizontalement automatiquement
+      display: flex;
+      margin: auto; // pour centrer mon élément
+
+      &-subtitle {
+        margin: auto;
+        text-decoration: none;
+        color: inherit;
+        width: 12rem;
+        background-color: #ffd7d0;
+        text-align: center;
+        padding: .5rem;
+        border-radius: 6px;
+      }
+    }
+
+    &-social {
+
+      &-logoContainer {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &-tooltip:hover &-logo {
+        color: #ffd7d0;
+        transition: color .7s;
+      }
+
+      &-logo {
+        min-width: 25%;
+        font-size: 3rem;
+        color: #a9a9a9;
+
+        &-tooltiptext {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+// CSS for medium devices (landscape tablets, 768px and up)
+@media only screen and (min-width: 1300px) {
+  .Footer {
+    width: 100vw;
+    height: 20vh;
+    background-color: #fff;
+    display: flex; // pour que les items du container soient en ligne et non en colonne
+    align-items: center;
+    text-align: center;
+
+
+    &-links {
+      display: flex;
+      width: 80vw;
+      align-items: flex start;
+      justify-content: space-between;
+    }
+
+    &-title,
+    &-about {
+      // Pour que les différents items prennent la totalité de la place horizontalement automatiquement
+      display: flex;
+      flex-direction: column;
+
+      & a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+
+
+    &-map {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      & a {
+        color: inherit;
+        text-decoration:none ;
+      }
+    }
+
+    &-about {
+      flex-grow: 1;
+    }
+
+    &-about-mobile {
+      display: none;
+    }
+
+
+
+    &-title {
+      justify-content: flex-start;
+      width: 20vw;
+
+      &-main {
+        display: flex;
+        padding-left: var(--gap-xl);
+        width: 100%; // centre mon titre
+      }
+    }
+  }
+}
+
+.Footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  flex-grow: 1;
+
+  .Footer-social-subtitle {
+    margin-bottom: 1rem;
+  }
+
+  .Footer-social-logoContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+
+    .Footer-social-tooltip {
+      position: relative;
+      display: inline-block;
+
+      &:hover .Footer-social-logo {
+        color: #ffd7d0;
+      }
+
+      .Footer-social-logo {
+        font-size: 3rem;
+        color: #a9a9a9;
+        transition: color .7s;
+
+        &-tooltiptext {
+          visibility: hidden;
+          width: 12rem;
+          background-color: #a9a9a9;
+          color: #fff;
+          text-align: center;
+          padding: .5rem;
+          border-radius: 6px;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #a9a9a9 transparent transparent transparent;
+          }
+
+          &-twitter {
+            bottom: 120%;
+            left: 50%;
+          }
+
+          &-instagram {
+            bottom: 120%;
+            left: 50%;
+          }
+
+          &-facebook {
+            bottom: 120%;
+            left: 50%;
+          }
+        }
+      }
+
+      &:hover .Footer-social-logo-tooltiptext {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+a:hover {
+  text-decoration: underline;
+}

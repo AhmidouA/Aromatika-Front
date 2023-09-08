@@ -1,0 +1,160 @@
+@font-face {
+  font-family: 'Typewriter Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/typewcond_regular.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Typewriter Condensed';
+  font-style: bold;
+  font-weight: 700;
+  src: url('../fonts/typewcond_bold.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Forum';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Forum-Regular.ttf') format('truetype');
+}
+
+:root {
+  --root-size: 62.5%;
+  font-size: var(--root-size);
+
+  /* Color */
+  --color-bg-light: #ffece9;
+  --color-bg-dark: #ffd7d0;
+  --color-bg-darker: #dba297;
+
+  --color-purple-light: #e8d4dd;
+  --color-purple: #d8b0c2;
+  --color-purple-dark: #ba8099;
+
+  --color-green-light: #98fb98;
+  --color-green: #1fdbbc;
+  --color-green-dark: #008f77;
+
+  --color-gray-light: #a9a9a9;
+  --color-gray: #696969;
+  --color-gray-dark: #dcdcdc;
+
+  --color-white: #fff;
+
+  --color-orange: #f0be85;
+  --color-orange-dark: #ff743d;
+  --color-orange-darker: #db541f;
+
+  --color-yellow-light: #fff4e9;
+  --color-yellow: #ffe8d0;
+  --color-yellow-dark: #dbba97;
+
+  /* Font */
+  --font-primary: 'Typewriter Condensed', sans-serif;
+  --font-secondary: 'Open Sans', sans-serif;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Space */
+  --gap-sm: 0.5rem;
+  --gap-md: 1rem;
+  --gap-lg: 2rem;
+  --gap-xl: 4rem;
+  --gap-xxl: 6rem;
+
+  /* Margin */
+  --margin-top: var(--gap-md);
+  --margin-right: var(--gap-md);
+  --margin-bottom: var(--gap-md);
+  --margin-left: var(--gap-md);
+
+  /* Définition des paddings */
+  --padding-top: var(--gap-md);
+  --padding-right: var(--gap-md);
+  --padding-bottom: var(--gap-md);
+  --padding-left: var(--gap-md);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: 1.8rem;
+  font-weight: var(--font-weight-regular);
+
+  background-color: var(--color-bg-light);
+  color: var(--color-gray);
+  overflow-x: hidden;
+  position: relative; /* Pour que mon footer soit en bas de la page, à garder */
+  min-height: 100vh; /* Je pense qu'on peut l'enlever, à tester */
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+/* Toasts */
+.my-toast-container {
+  z-index: 9999;
+  position: fixed;
+  padding: var(--gap-md);
+  top: 0;
+  right: 0;
+  width: auto;
+}
+
+/* Toasts */
+.toast-container {
+  z-index: 9999;
+  position: fixed;
+  padding: var(--gap-md);
+  top: 0;
+  right: 0;
+  width: auto;
+}
+
+.toast {
+  font-family: var(--font-secondary);
+  font-size: 1.6rem;
+  font-weight: var(--font-weight-regular);
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  background-color: var(--color-bg-dark);
+  color: var(--color-white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+}
+
+.toast--success {
+  background-color: var(--color-purple);
+}
+
+.toast--error {
+  background-color: var(--color-orange-dark);
+}
+
+.toast-body {
+  padding-right: 10px;
+}
+
+.toast-body > div {
+  margin-right: 10px;
+}
+
+.toast-body > svg {
+  font-size: 2.2rem;
+}

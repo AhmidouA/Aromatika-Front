@@ -1,0 +1,186 @@
+// CSS for mobile
+.Library {
+    padding: 3rem;
+    margin: 4rem auto 0;
+
+    // HEADER
+    &-header {
+        text-align: center;
+        padding-bottom: 3.5rem;
+        position: relative;
+
+        // Sert à construire une bordure qui ne fait pas la taille du parent
+        &:before {
+            content: "";
+            position: absolute;
+            left: 2%;
+            bottom: 0;
+            width: 96%;
+            border-bottom: 1.5px solid #a9a9a9;
+        }
+
+        &-avatar {
+            // pour rendre mon img responsive
+            width: 100%;
+            max-width: 180px;
+            height: 180px;
+
+            // pour mettre mon img dans un cercle
+            border-radius: 50%;
+        }
+    }
+
+    // LES HUILES DE LA BIBLIOTHÈQUE
+    &-favorite-oils {
+        display: flex;
+        flex-direction: column;
+        border: .1rem solid #a9a9a9;
+        margin: 5rem auto;
+
+        // HEADER DES HUILES DE LA BIBLIOTHÈQUE
+        &-header {
+            display: flex;
+            flex-direction: row;
+            padding: 3rem 3rem 0;
+            margin: 0 auto 2rem;
+
+            &-icon {
+                display: flex;
+                align-self: center;
+                width: 100%;
+                max-width: 64px;
+                height: auto;
+            }
+
+            &-title {
+                align-self: center;
+            }
+        }
+
+        // ELEMENTS DES HUILES DE LA BIBLIOTHÈQUE
+        &-element {
+
+            &-link {
+                display: inherit;
+                flex-direction: inherit;
+                text-decoration: none;
+                color: inherit;
+                margin: 0 auto;
+            }
+
+            &-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0rem 6rem 3rem;
+                gap: 1.5rem;
+            }
+
+            &-image {
+                width: 100%;
+                max-width: 180px;
+                height: auto;
+
+                // pour centrer mon image dans la div avec un lien cliquable
+                display: flex;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+// CSS for medium devices (landscape tablets, 768px and up)
+@media only screen and (min-width: 768px) {
+    .Library {
+        padding: 3rem;
+        margin: 4rem auto 0;
+        padding-bottom: 15rem; // Pour laisser la marge à mon footer
+
+        // HEADER
+        &-header {
+            text-align: center;
+
+            &-avatar {
+                // pour rendre mon img responsive
+                width: 100%;
+                max-width: 180px;
+                height: 180px;
+
+                // pour mettre mon img dans un cercle
+                border-radius: 50%;
+            }
+        }
+
+        // LES HUILES DE LA BIBLIOTHÈQUE
+        &-favorite-oils {
+            display: flex;
+            flex-direction: column;
+            border: .1rem solid #a9a9a9;
+            margin: 5rem auto;
+
+            // HEADER DES HUILES DE LA BIBLIOTHÈQUE
+            &-header {
+                display: flex;
+                flex-direction: column;
+                padding: 3rem 3rem 0;
+                margin: 0 auto 2rem;
+
+                &-icon {
+                    display: flex;
+                    align-self: center;
+                    width: 100%;
+                    max-width: 64px;
+                    height: auto;
+                }
+            }
+
+            // ELEMENTS DES HUILES DE LA BIBLIOTHÈQUE
+            &-element {
+                display: flex;
+                flex-direction: column;
+                row-gap: 1.5rem;
+                width: 20%; // pour n'afficher que 4 éléments par ligne, à la place de => flex: 1 0 20%;
+                align-items: center;
+
+                &:hover {
+                    transform: scale(1.07);
+                    transition: transform 0.4s ease-in-out;
+                }
+
+                &-link {
+                    display: inherit;
+                    flex-direction: inherit;
+                    text-decoration: none;
+                    color: inherit;
+                }
+
+                &-container {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                    padding: 3rem 6rem;
+                    gap: 1.5rem;
+                    row-gap: 4rem;
+                    flex-wrap: wrap; // pour n'afficher que 4 éléments par ligne
+                    align-items: flex-start;
+                }
+
+                &-image {
+                    width: 100%;
+                    max-width: 80%;
+                    height: auto;
+
+                    &:hover {
+                        // box-shadow: 0px 0px 20px rgba(186, 128, 153, 0.4); // box-shadow de la catégorie
+                        box-shadow: 0px 4px 60px 25px rgb(186 128 153 / 40%);
+                        transition: box-shadow 0.4s ease-in-out;
+                    }
+                }
+
+                &-title {
+                    align-self: center;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,255 @@
+/* Pour les Smartphones (portrait) */
+@media only screen and (max-width: 1159px) {
+    .pouet {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+
+        &-carrousel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: var(--gap-lg) 0;
+
+            &-pics {
+                width: 100%;
+                border-radius: 5px;
+
+            }
+        }
+
+        &-description {
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            &-text {
+                padding: var(--gap-lg);
+                text-align: justify;
+
+            }
+        }
+    }
+
+    .categories {
+        width: 100%;
+        padding: var(--gap-lg);
+
+        &-spinner {
+            &-container {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+                justify-items: center;
+                gap: 0px 0px;
+            }
+
+            &-lds-dual-ring {
+                display: inline-block;
+                width: 80px;
+                height: 80px;
+            }
+
+            &-lds-dual-ring:after {
+                content: " ";
+                display: block;
+                width: 64px;
+                height: 64px;
+                margin: 8px;
+                border-radius: 50%;
+                border: 6px solid #fff;
+                border-color: #fff transparent #fff transparent;
+                animation: lds-dual-ring 1.2s linear infinite;
+            }
+        }
+
+        &-list {
+            display: grid;
+            grid-template-rows: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        &-link {
+            background: var(--color-bg-dark);
+            padding: 10px;
+            border-radius: 5px;
+
+            &-title {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--color-grey);
+                font-size: 2rem;
+                text-decoration: none;
+                height: 10vh;
+                text-align: center;
+
+            }
+
+            &-text {
+                display: none;
+                justify-content: center;
+                align-items: center;
+            }
+
+        }
+    }
+}
+
+/* Pour les ordinateurs portables (portrait et paysage) */
+@media only screen and (min-width:1160px) and (max-width: 3000px) {
+
+    .main {
+        display: flex;
+        background-color: #fff;
+        margin: 0 var(--gap-xl);
+        border-radius: 5PX;
+        height: 60%;
+
+        &-carrousel {
+            display: flex;
+            width: 45vw;
+
+            &-pics {
+                width: 100%;
+                border-bottom-left-radius: 5px;
+                border-top-left-radius: 5px;
+                object-fit: cover;
+            }
+        }
+
+        &-description {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--gap-xl);
+            width: 55vw;
+
+            &-text {
+                font-size: 2rem;
+                width: 100%;
+                text-align: justify;
+            }
+
+
+        }
+
+        &-links {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin: 0 var(--gap-xl);
+        }
+    }
+
+
+    .categories {
+        width: 100%;
+
+        &-spinner {
+            &-container {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+                justify-items: center;
+                gap: 0px 0px;
+            }
+
+            &-lds-dual-ring {
+                display: inline-block;
+                width: 80px;
+                height: 80px;
+            }
+
+            &-lds-dual-ring:after {
+                content: " ";
+                display: block;
+                width: 64px;
+                height: 64px;
+                margin: 8px;
+                border-radius: 50%;
+                border: 6px solid #fff;
+                border-color: #fff transparent #fff transparent;
+                animation: lds-dual-ring 1.2s linear infinite;
+            }
+        }
+
+        &-list {
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            list-style: none;
+            width: 100%;
+        }
+
+        &-link {
+            background: var(--color-bg-dark);
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background: var(--color-purple-light);
+            }
+
+
+            &-title {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 10vh;
+                font-size: 2rem;
+
+            }
+
+            &-text {
+                display: none;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                color: var(--color-grey);
+                font-size: 2rem;
+                text-decoration: none;
+            }
+
+        }
+    }
+
+    .pouet {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100vh;
+    }
+
+    .categories-link:hover .categories-link-text {
+        display: flex;
+        text-align: center;
+        align-items: center;
+    }
+
+    .categories-link:hover .categories-link-title {
+        display: none;
+    }
+}
+
+@keyframes categories-spinner-lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,67 @@
+/* Pour les Smartphones (portrait) */
+@media only screen and (max-width: 780px) {
+
+    .termsOfUse {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        margin-bottom: var(--gap-lg);
+
+        &-title {
+            text-align: center;
+            padding-bottom: var(--gap-lg);
+        }   
+
+        &-part1, {
+
+            &-figure {
+                display: flex;
+                justify-content: center;
+                height: 40vh;
+                padding: var(--gap-lg) 0;
+
+                &-img1 {
+                    border-radius: 5px;
+                    height: 100%;
+                }
+                
+                &-img2,
+                &-img3 {
+                    display: none;
+                }
+            }
+
+            &-figure2 {
+                
+                display: flex;
+                justify-content: center;
+                height: 40vh;
+                padding: var(--gap-lg) 0;
+
+                &-img2bis {
+                    border-radius: 5px;
+                    height: 100%;
+                }
+            }
+
+            &-text {
+                padding: 0 var(--gap-lg);
+                margin-bottom: var(--gap-lg);
+                text-align: justify;
+
+                &-subtitle,
+                &-subtitle2 {
+                    display: flex;
+                    justify-content: center;
+                    text-decoration: underline;
+                    margin-bottom: var(--gap-lg);
+                }
+
+                &-terms {
+                    margin-bottom: var(--gap-lg);
+                }
+            }
+        }
+    }
+
+}
