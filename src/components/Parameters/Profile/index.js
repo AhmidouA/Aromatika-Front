@@ -26,17 +26,18 @@ function ParametersProfile({ userId, userName, userImage }) {
 
     // Pour récupérer l'image envoyée dans mon input du form "Profile Avatar"
     const handleImageChange = (event) => {
-        setFile(event.target.files[0]);
+        return setFile(event.target.files[0]);
     };
 
     // Pour envoyer l'image en post lors du clic du bouton envoyé
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            let formData = new FormData();
+            const formData = new FormData();
             formData.append('image', file);
 
             const response = await axiosInstance.post(`/profile/picture/${userId}`, formData);
+            console.log("response Depuis les param", response)
             setFile('');
 
             // On envoie un toast de succès
@@ -56,7 +57,7 @@ function ParametersProfile({ userId, userName, userImage }) {
 
             <div className="Parameters-profile-avatar">
                 <form className="Parameters-profile-avatar-form">
-                    <label className="Parameters-profile-avatar-form-label" for="avatar">Mon avatar actuel :</label>
+                    <label className="Parameters-profile-avatar-form-label" htmlFor="avatar">Mon avatar actuel :</label>
                     <div className="Parameters-profile-avatar-form-container">
                         <div className="Parameters-profile-avatar-form-plus-hover">
                             <img
@@ -64,7 +65,7 @@ function ParametersProfile({ userId, userName, userImage }) {
                                 src={userImage ? `${process.env.REACT_APP_BASE_URL}/profile/picture/${userImage}` : avatar}
                                 alt="The avatar you downloaded"
                             />
-                            <label for="avatar" className="Parameters-profile-avatar-form-plus-text">Changer d'avatar</label>
+                            <label htmlFor="avatar" className="Parameters-profile-avatar-form-plus-text">Changer d'avatar</label>
                             <input
                                 className="Parameters-profile-avatar-form-avatar-input"
                                 type="file"
