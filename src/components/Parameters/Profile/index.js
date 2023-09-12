@@ -27,6 +27,8 @@ function ParametersProfile({ userId, userName, userImage }) {
     // Pour récupérer l'image envoyée dans mon input du form "Profile Avatar"
     const handleImageChange = (event) => {
         return setFile(event.target.files[0]);
+
+
     };
 
     // Pour envoyer l'image en post lors du clic du bouton envoyé
@@ -52,6 +54,7 @@ function ParametersProfile({ userId, userName, userImage }) {
         }
     };
 
+
     return (
         <div className="Parameters-profile">
 
@@ -59,13 +62,15 @@ function ParametersProfile({ userId, userName, userImage }) {
                 <form className="Parameters-profile-avatar-form">
                     <label className="Parameters-profile-avatar-form-label" htmlFor="avatar">Mon avatar actuel :</label>
                     <div className="Parameters-profile-avatar-form-container">
-                        <div className="Parameters-profile-avatar-form-plus-hover">
+                        <div className="Parameters-profile-avatar-form-plus-hover">                      
                             <img
                                 className="Parameters-profile-avatar-form-avatar-image"
                                 src={userImage ? `${process.env.REACT_APP_BASE_URL}/profile/picture/${userImage}` : avatar}
                                 alt="The avatar you downloaded"
                             />
                             <label htmlFor="avatar" className="Parameters-profile-avatar-form-plus-text">Changer d'avatar</label>
+                            {/* Le nom de la nouvelle image quand il telecharge */}
+                            <p>{file.name}</p>
                             <input
                                 className="Parameters-profile-avatar-form-avatar-input"
                                 type="file"

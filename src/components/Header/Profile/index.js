@@ -90,7 +90,6 @@ const Profile = () => {
   return (
     <div>
       <div onClick={toggleModal}>
-        {!isLoggedIn && <CgProfile className='profile-icon' alt='Profile Icon' />}
         {isLoggedIn && profile?.userImage ? (
           <img
             className='profile-avatar'
