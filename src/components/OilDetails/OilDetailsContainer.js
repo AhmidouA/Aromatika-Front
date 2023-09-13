@@ -285,7 +285,7 @@ const OilDetailsContainer = () => {
       // If the heart is filled, remove the oil from favorites
       if (isHeartFilled) {
           // Vue que j'envoi le userId pour delite donc on lui envoi les deux data userId(body) et oilId(params)
-          await axiosInstance.delete('/profile/favorites', {
+          await axiosInstance.delete(`/profile/favorites/${id}`, {
           data: requestData,
         });
         
@@ -329,6 +329,8 @@ const OilDetailsContainer = () => {
     }
   }, [id]);
 
+
+
   // Handle aromathèque toggle function
   const handleAromathequeToggle = async () => {
     try {
@@ -339,7 +341,7 @@ const OilDetailsContainer = () => {
         // If the heart is filled, remove the oil from aromatheque
         if (isBottleFilled) {
             // Vue que j'envoi le userId pour delite donc on lui envoi les deux data userId(body) et oilId(params)
-            await axiosInstance.delete('/profile/favorites', {
+            await axiosInstance.delete(`/profile/aromatheque/${id}`, {
             data: requestData,
           });
           
