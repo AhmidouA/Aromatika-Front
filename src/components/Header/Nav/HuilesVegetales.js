@@ -27,6 +27,7 @@ const HV = () => {
       <a className='HV' onClick={handleClick}>
         Huiles végétales
       </a>
+      {/* 
       {showList && (
         <ul ref={modalRef} className='HV-list'>
           <li>
@@ -71,6 +72,7 @@ const HV = () => {
           </li>
         </ul>
       )}
+       */}
     </div>
   );
 };

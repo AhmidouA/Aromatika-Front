@@ -74,7 +74,7 @@ const Categories = () => {
                             <a className="categories-link-title" >
                                 {getCategoryName(category.id)}
                             </a>
-                            <a className='categories-link-text' href={`/category/${category.id}`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                            <a className='categories-link-text' href={`/category/${category.id}`}>{getCategoryName(category.id).toUpperCase()}</a>
 
                         </li>
 
