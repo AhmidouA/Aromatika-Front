@@ -331,6 +331,8 @@ const OilDetailsContainer = () => {
 
 
 
+  
+
   // Handle aromathèque toggle function
   const handleAromathequeToggle = async () => {
     try {
