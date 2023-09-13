@@ -6,6 +6,7 @@ import { GiBrandyBottle } from 'react-icons/gi';
 import { FaHeart } from 'react-icons/fa';
 import OilDetailsTooltip from './OilDetailsTooltip';
 import Spinner from '../Spinner';
+import { toast } from 'react-toastify';
 
 // Container for the whole page
 const Container = styled.div`
@@ -269,14 +270,25 @@ const OilDetailsContainer = () => {
     fetchOil();
   }, [id]);
 
+  console.log("userId>>>>>>", userId)
   console.log('ID>>>>>>>>>>>>>>>>>>> ', id);
+
 
   // Handle favorite toggle function
   const handleFavoriteToggle = async () => {
     try {
+
+      const requestData = {
+        user_id: userId, // Utilisez le userId du state
+        oil_id: id, // Utilisez l'id de l'huile
+      };
       // If the heart is filled, remove the oil from favorites
       if (isHeartFilled) {
-        await axiosInstance.delete(`/profile/favorites/${id}`);
+          // Vue que j'envoi le userId pour delite donc on lui envoi les deux data userId(body) et oilId(params)
+          await axiosInstance.delete('/profile/favorites', {
+          data: requestData,
+        });
+        
         // Remove the oil id from the local storage
         localStorage.removeItem(`oil_${id}_favorite`);
         // Toggle the isHeartFilled state
@@ -320,23 +332,35 @@ const OilDetailsContainer = () => {
   // Handle aromathèque toggle function
   const handleAromathequeToggle = async () => {
     try {
-      if (isBottleFilled) {
-        await axiosInstance.delete(`/profile/aromatheque/${id}`);
+        const requestData = {
+          user_id: userId, // Utilisez le userId du state
+          oil_id: id, // Utilisez l'id de l'huile
+        };
+        // If the heart is filled, remove the oil from aromatheque
+        if (isBottleFilled) {
+            // Vue que j'envoi le userId pour delite donc on lui envoi les deux data userId(body) et oilId(params)
+            await axiosInstance.delete('/profile/favorites', {
+            data: requestData,
+          });
+          
         localStorage.removeItem(`oil_${id}_aromatheque`);
         // Display a toast message to indicate that the oil has been removed from the aromatheque
         toast.success(`L'huile ${oil.name} a été retirée de votre Aromathèque.`);
       } else {
+
         await axiosInstance.post('/profile/aromatheque', {
           oil_id: id,
           user_id: userId, // Use the userId from the state
           favorite: null,
           aromatheque: true,
         });
+
         localStorage.setItem(`oil_${id}_aromatheque`, true);
         // Display a toast message to indicate that the oil has been added to the aromatheque
         toast.success(`L'huile ${oil.name} a été ajoutée à votre Aromathèque.`);
       }
       setIsBottleFilled(!isBottleFilled);
+
     } catch (error) {
       console.log(error);
       // Display a toast message to indicate that an error has occurred
