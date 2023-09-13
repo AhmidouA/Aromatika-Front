@@ -49,6 +49,8 @@ function Profile() {
         fetchProfile();
     }, []);
 
+    
+
     // PLAN
     // 1 - Je dois récupérer profile.userFavorite
     // userFavorites est un array avec des objets
@@ -69,12 +71,12 @@ function Profile() {
     // ======> Voir comment gérer si il n'y a aucun huiles en bdd dans le profil
 
     // Récupération des huiles favorites nested (true)
-    const filteredFavorite = profile?.userFavorites.filter((userFav) => userFav.favorite === true);
-    console.log("FILTERED", filteredFavorite);
+    const filteredFavorite = profile?.userFavorites.filter((userFav) => userFav.favorite === true || userFav.favorite === null);
+    console.log("filteredFavorite", filteredFavorite);
 
     // Récupération des huiles de l'aromathèque nested (true)
-    const filteredLibrary = profile?.userAromatheques.filter((userFav) => userFav.aromatheque === true);
-    console.log("FILTERED", filteredLibrary);
+    const filteredLibrary = profile?.userAromatheques.filter((userFav) => userFav.aromatheque === true || userFav.aromatheque === null);
+    console.log("filteredLibrary", filteredLibrary);
 
     // MON RENDU
     if (!isLoggedIn) {
