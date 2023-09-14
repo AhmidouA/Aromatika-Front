@@ -16,8 +16,11 @@ import Library from './Library/index';
 import Error from '../Error/index';
 import Spinner from '../Spinner';
 
+
 // -- Mon composant
 function Profile() {
+
+
     // Pour vérifier que mon utilisateur est bien connecté
     // Si l'utilisateur n'est pas connecté, on ne montre pas la page profil
     const [isLoggedIn, setIsLoggedIn] = useState(false);
