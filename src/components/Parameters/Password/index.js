@@ -173,7 +173,6 @@ function ParametersPassword({ userMail }) {
                     />
                 </div>
 
-
                 <div className="Parameters-password-form-container">
                     <label className="Parameters-password-form-label" htmlFor="password">Nouveau mot de passe :</label>
                     <BtnStyleNewPassword onClick={showNewPassword}>{newPasswordIsVisible ? "Cacher" : "Afficher"} </BtnStyleNewPassword>      
