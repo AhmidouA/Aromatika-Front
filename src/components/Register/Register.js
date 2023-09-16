@@ -232,7 +232,7 @@ function Register() {
           </ValidationButton>
         </ButtonContainer>
       </Form>
-      {isLoginActive && <Link ForgotPasswordLink to="/forgot-password">Mot de passe oublié ?</Link>}
+      {isLoginActive && <Link to="/forgot-password">Mot de passe oublié ?</Link>}
     </Container>
   );
 }
