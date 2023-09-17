@@ -117,7 +117,7 @@ function ParametersPassword({ userMail }) {
             password: newPassword,
             confirmPassword: newPasswordConfirm
           });
-        //   console.log("response Pour le Password", response);
+          //console.log("response Pour le Password", response);
     
           // On envoie un toast de succès après une modification réussie du mot de passe
           toast.success(`Votre mot de passe a bien été modifié avec succès ＼(≧▽≦)／`);
@@ -125,7 +125,7 @@ function ParametersPassword({ userMail }) {
           // On redirige vers la page profil après une seconde
           setTimeout(() => {
             navigate('/profil');
-        }, 2000); // 2seconde
+          }, 2000); // 2seconde
     
         } catch (error) {
           console.log(error);
