@@ -1,22 +1,24 @@
 // -- Mes imports locaux
 import axiosInstance from '../../../utils/axios';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 import { FaPlus } from "react-icons/fa";
 import avatar from "../avatar.jpg";
 
+
 // -- Mon composant
 function ParametersProfile({ userId, userName, userImage }) {
     const navigate = useNavigate();
+
 
     // ROUTES BACK
     // router.post(‘/profile/picture/:id’, auth.checkToken, upload.single(‘image’), userController.addPicture);
     // router.get(‘/profile/picture/:file’, userController.streamPicture);
 
-    // PLAN
+    // PLAN Image
     // 1 - Si l'utilisateur veut changer de photo, je dois récupérer la photo
     // 2 - Et envoyer la photo en post
 
@@ -32,14 +34,14 @@ function ParametersProfile({ userId, userName, userImage }) {
     };
 
     // Pour envoyer l'image en post lors du clic du bouton envoyé
-    const handleSubmit = async (event) => {
+    const handleSubmitPicture = async (event) => {
         event.preventDefault();
         try {
             const formData = new FormData();
             formData.append('image', file);
 
             const response = await axiosInstance.post(`/profile/picture/${userId}`, formData);
-            console.log("response Depuis les param", response)
+            // console.log("response Depuis les param pour la photo", response)
             setFile('');
 
             // On envoie un toast de succès
@@ -49,10 +51,85 @@ function ParametersProfile({ userId, userName, userImage }) {
             setTimeout(() => {
                 navigate('/profil');
             }, 2500);
+
         } catch (error) {
             console.log(error);
         }
     };
+
+
+    // PLAN Update userName
+
+    const id = userId;
+    const [profile, setProfile] = useState(null)
+    // state new username
+    const [pseudo, setPseudo] = useState("");
+    const [newUserName, setNewUserName] = useState("");
+    
+
+
+    // methode validation du from pour le changement du Pseudo
+    const handleSubmitUsername = async (event) => {
+        event.preventDefault();
+
+        try {
+            const authKey = localStorage.getItem('authKey');
+            const response = await axiosInstance.put(`/profile/username/${id}`, {
+                username: pseudo,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${authKey}`,
+                },
+            });
+            // console.log("response Dans Params Profile", response)
+
+             // On envoie un toast de succès après une modification réussie du mot de passe
+             toast.success(`Votre Pseudo de profil a bien été modifié. 
+                            Lors de votre prochaine connexion votre pseudo sera mis à jour   
+                            ＼(≧▽≦)／`);
+            console.log("response Dans le params", response.data)
+            setNewUserName(response.data.username)
+
+
+            // On redirige vers la page profil après une seconde
+            setTimeout(() => {
+            navigate('/profil');
+            }, 5000); // 2seconde
+
+        } catch(error) {
+            console.log(error);
+            // console.log("error.response.message.data>>>>", error.response.data.message)
+            if (error.response.data.message = "Ce nom d'utilisateur est déjà pris") {
+                toast.error('Ce Pseudo est déjà pris');
+            } else {
+            toast.error('Erreur lors de la modification du Pseudo. Veuillez réessayer plus tard.');
+            }
+        }          
+    };
+
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                // localStorage pour le token
+                const authKey = localStorage.getItem('authKey');
+                // response avec l'autorisation du token
+                const response = await axiosInstance.get(`/profile`, 
+                    {headers: {Authorization: `Bearer ${authKey}`,},
+                });   
+                setProfile(response.data)
+                // console.log("Profile Dans Params/profile", response)
+                
+
+            } catch (error) {
+                console.log(error);
+                }
+        };
+        fetchProfile();            
+    }, []);
+
+    // console.log("Profile Dans Params/profile", profile)
+    // console.log("Pseudo Dans Params/profile", pseudo)
 
 
     return (
@@ -83,7 +160,7 @@ function ParametersProfile({ userId, userName, userImage }) {
                                 className="Parameters-profile-avatar-form-submit"
                                 type="submit"
                                 value="Valider"
-                                onClick={handleSubmit}
+                                onClick={handleSubmitPicture}
                             />
                         </div>
                     </div>
@@ -91,7 +168,7 @@ function ParametersProfile({ userId, userName, userImage }) {
             </div>
 
             <div className="Parameters-profile-pseudo">
-                <form className="Parameters-profile-pseudo-form">
+                <form className="Parameters-profile-pseudo-form" onSubmit={handleSubmitUsername}>
                     <label className="Parameters-profile-pseudo-form-label" for="pseudo">Mon pseudo actuel : {userName}</label>
                     <div className="Parameters-profile-pseudo-form-container">
                         <input
@@ -100,6 +177,8 @@ function ParametersProfile({ userId, userName, userImage }) {
                             id="pseudo"
                             name="pseudo"
                             placeholder="Entrer un nouveau pseudo"
+                            value={pseudo}
+                            onChange={(event) => setPseudo(event.target.value)}
                         />
                         <input className="Parameters-profile-pseudo-form-submit" type="submit" value="Valider" />
                     </div>

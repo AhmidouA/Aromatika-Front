@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   Container,
   Form,
@@ -232,7 +232,7 @@ function Register() {
           </ValidationButton>
         </ButtonContainer>
       </Form>
-      {isLoginActive && <ForgotPasswordLink>Mot de passe oublié ?</ForgotPasswordLink>}
+      {isLoginActive && <Link to="/forgot-password">Mot de passe oublié ?</Link>}
     </Container>
   );
 }

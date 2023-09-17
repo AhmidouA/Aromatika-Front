@@ -26,14 +26,14 @@ function Parameters() {
     useEffect(() => {
         const authKey = localStorage.getItem('authKey');
         setIsLoggedIn(authKey ? true : false);
-    }, []);
 
-    useEffect(() => {
         const fetchProfile = async () => {
             try {
                 const authKey = localStorage.getItem('authKey');
                 const response = await axiosInstance.get(`/profile`, { headers: { Authorization: `Bearer ${authKey}` } });
+                console.log("response.data>>>>>", response.data)
                 setProfile(response.data);
+
                 toggleIsLoading(false);
                 console.log("DATA", response.data);
             } catch (error) {
@@ -42,6 +42,8 @@ function Parameters() {
         };
         fetchProfile();
     }, []);
+
+    console.log("Profile Dans le Parent>>>>", profile)
 
     // TOGGLE
     // Pour garder en mémoire si mon toggle est "true" ou "false"
