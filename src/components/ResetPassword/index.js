@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 // Toast React
@@ -29,7 +29,50 @@ const ResetPassword = () => {
 
 
   /**       Les methode */
+  // Si c'est le bon utilisateur et token
+  const validUser = async () => {
 
+    try {
+        const response = await fetch(`https://aromatika-back-api.onrender.com/profile/reset-password/${id}/${token}`, {
+            method: "GET",
+            headers: {
+            "Content-Type": "application/json"
+            }        
+        });
+        console.log("response dans le Reset Password validUser",response)
+
+        const data = await response.json()
+        console.log("data dans le Reset Password validUser", data)
+        console.log("data dans le Reset Password validUser", data.message)
+
+        if (response.status === 500 && data.error === "Erreur lors de la récupération du mot de passe") {
+          console.log("user No valid") 
+          toast.error(`Erreur lors de la récupération. Veuillez vérifier votre boite mail`)
+          setTimeout(() => {
+            
+            navigate('*');
+        }, 3000); // 3seconde
+
+        } else if (response.status === 400 && data.message === "Le compte n'existe pas") {         
+          console.log("user No valid") 
+          toast.error(`Votre Compte n'existe pas, Veuillez vous inscrire.`)
+          setTimeout(() => {
+  
+            navigate('*');
+        }, 3000); // 3seconde
+
+        } else {
+          toast.success(`Votre pouvez modifier votre mot de passe.`)
+          console.log("user No valid")
+        };   
+       
+    } catch (error) {
+      console.error("error dans le Reset Password", error)              
+    }
+}
+
+
+  // validation du formulaire mot de passe
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -68,6 +111,14 @@ const ResetPassword = () => {
       setNewPassword("")
   };
 
+
+
+  /**       Les hooks */
+  useEffect(() => {
+    // vérifie le token et l'user
+    validUser()
+  }, [])
+  
 
   return (
     <Container >
