@@ -1,19 +1,19 @@
 import React from 'react';
 import Header from '../components/Header';
-import ForgotPassword from '../components/ForgotPassword/Index';
+import ResetPassword from '../components/ResetPassword'
 import Footer from '../components/Footer';
 import useScrollTop from '../hooks/useScrollTop';
 
-const ForgotPasswordPage = () => {
+const ResetPasswordPage = () => {
     useScrollTop();
 
   return (
       <>
           <Header />
-          <ForgotPassword />
+          <ResetPassword />
           <Footer />
       </>
   );
 };
 
-export default ForgotPasswordPage;
+export default ResetPasswordPage;
