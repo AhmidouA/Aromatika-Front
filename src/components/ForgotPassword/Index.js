@@ -4,13 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 // Toast React
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-// axios API 
-import axiosInstance from '../../utils/axios';
 
+// axios API 
+import axios from 'axios';
 
 // Component Css
-import {Container, Form, FormGroup, FormInput, ValidationButton, ForgotPasswordLink} from '../Register/styles';
-import axios from 'axios';
+import {Container, Form, FormGroup, FormInput, ValidationButton} from '../Register/styles';
+
 
 
 const ForgotPassword = () => {
@@ -19,12 +19,13 @@ const ForgotPassword = () => {
     
 
     /**       Les states */
+    // Email
     const [email, setEmail] = useState();
 
 
 
     /**       Les methode */
-
+    // validation du formulaire envoi de mail
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {         
@@ -32,7 +33,7 @@ const ForgotPassword = () => {
                 email: email
                 });
 
-            // On envoie un toast de succès après une modification réussie du mot de passe
+            // On envoie un toast de succès après une vérification du mail
             toast.success(`L'email est parti. Veuillez vérifier votre boîte mail ${email}. ＼(≧▽≦)／`);
 
             setTimeout(() => {
@@ -70,7 +71,7 @@ const ForgotPassword = () => {
                             required                     
                         />
                     <ValidationButton type='submit'>Envoyer</ValidationButton>
-                    <Link className={ForgotPasswordLink}  to="/login">Déjé Inscrit ? Connectez-vous.</Link>
+                    <Link to="/login">Déjé Inscrit ? Connectez-vous.</Link>
                     
                 </FormGroup>
             </Form>
