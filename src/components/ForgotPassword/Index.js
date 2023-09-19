@@ -17,10 +17,7 @@ const ForgotPassword = () => {
 
     const navigate = useNavigate();
 
-    /**       Les props */
-    const { id, token } = useParams();
-    console.log("id dans le forgot Password", id);
-    console.log("token dans le forgot Password", token);
+    /**       Les props */ 
     
 
     /**       Les states */
@@ -30,8 +27,6 @@ const ForgotPassword = () => {
 
 
     /**       Les methode */
-
-
     // validation du formulaire envoi de mail
     const handleSubmit = async (event) => {
         event.preventDefault();

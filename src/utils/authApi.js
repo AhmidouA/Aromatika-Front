@@ -87,6 +87,7 @@ export const loginUser = async (email, password) => {
     });
     return response.data;
   } catch (error) {
+    console.log("error Dans authApi", error)
     throw error.response.data;
   }
 };

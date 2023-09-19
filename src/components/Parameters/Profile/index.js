@@ -22,16 +22,19 @@ function ParametersProfile({ userId, userName, userImage }) {
     // 1 - Si l'utilisateur veut changer de photo, je dois récupérer la photo
     // 2 - Et envoyer la photo en post
 
+    /**       Les states */
     // Je récupère mon image envoyée par mon utilisateur et je la stocke dans file
     const [file, setFile] = useState('');
     console.log("FILE", file);
 
+
+    /**       Les methode */
+
     // Pour récupérer l'image envoyée dans mon input du form "Profile Avatar"
     const handleImageChange = (event) => {
         return setFile(event.target.files[0]);
-
-
     };
+
 
     // Pour envoyer l'image en post lors du clic du bouton envoyé
     const handleSubmitPicture = async (event) => {
@@ -60,14 +63,18 @@ function ParametersProfile({ userId, userName, userImage }) {
 
     // PLAN Update userName
 
+    /**       Les props */
     const id = userId;
+
+
+    /**       Les states */
+    // state profile
     const [profile, setProfile] = useState(null)
     // state new username
     const [pseudo, setPseudo] = useState("");
-    const [newUserName, setNewUserName] = useState("");
     
 
-
+    /**       Les methode */
     // methode validation du from pour le changement du Pseudo
     const handleSubmitUsername = async (event) => {
         event.preventDefault();
@@ -81,14 +88,15 @@ function ParametersProfile({ userId, userName, userImage }) {
                     Authorization: `Bearer ${authKey}`,
                 },
             });
-            // console.log("response Dans Params Profile", response)
+            console.log("response Dans le handleSubmitUsername Params Profile", response)
 
              // On envoie un toast de succès après une modification réussie du mot de passe
              toast.success(`Votre Pseudo de profil a bien été modifié. 
                             Lors de votre prochaine connexion votre pseudo sera mis à jour   
                             ＼(≧▽≦)／`);
             console.log("response Dans le params", response.data)
-            setNewUserName(response.data.username)
+            localStorage.setItem('username', response.data.username)
+            setPseudo(response.data.username)
 
 
             // On redirige vers la page profil après une seconde
@@ -108,6 +116,7 @@ function ParametersProfile({ userId, userName, userImage }) {
     };
 
 
+    /**       Les hooks */
     useEffect(() => {
         const fetchProfile = async () => {
             try {
@@ -116,10 +125,11 @@ function ParametersProfile({ userId, userName, userImage }) {
                 // response avec l'autorisation du token
                 const response = await axiosInstance.get(`/profile`, 
                     {headers: {Authorization: `Bearer ${authKey}`,},
-                });   
+                });
+
+                console.log("useEffect Dans le params profile", response)
                 setProfile(response.data)
-                // console.log("Profile Dans Params/profile", response)
-                
+                console.log("le profile useEffect Dans le params profile", profile)
 
             } catch (error) {
                 console.log(error);
@@ -127,9 +137,6 @@ function ParametersProfile({ userId, userName, userImage }) {
         };
         fetchProfile();            
     }, []);
-
-    // console.log("Profile Dans Params/profile", profile)
-    // console.log("Pseudo Dans Params/profile", pseudo)
 
 
     return (
