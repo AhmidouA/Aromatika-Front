@@ -94,9 +94,11 @@ function ParametersProfile({ userId, userName, userImage }) {
              toast.success(`Votre Pseudo de profil a bien été modifié. 
                             Lors de votre prochaine connexion votre pseudo sera mis à jour   
                             ＼(≧▽≦)／`);
+
+
             console.log("response Dans le params", response.data)
             localStorage.setItem('username', response.data.username)
-            setPseudo(response.data.username)
+            
 
 
             // On redirige vers la page profil après une seconde
@@ -128,8 +130,20 @@ function ParametersProfile({ userId, userName, userImage }) {
                 });
 
                 console.log("useEffect Dans le params profile", response)
-                setProfile(response.data)
-                console.log("le profile useEffect Dans le params profile", profile)
+                // Mettre à jour le pseudonyme dans l'état local à partir du localStorage
+                const storedUsername = localStorage.getItem("username");
+                // Vérifie si un pseudonyme est stocké dans le localStorage
+                if (storedUsername) {
+                    // Met à jour l'état profile en utilisant la fonction setProfile
+                    // en copiant d'abord les valeurs précédentes (prevProfile) avec ...
+                    // puis en remplaçant userName par la valeur stockée localement (storedUsername)
+                    setProfile((prevProfile) => ({
+                        ...prevProfile, // Copie les valeurs précédentes de prevProfile
+                        userName: storedUsername // Remplace userName par storedUsername
+
+                    }))
+                }
+                
 
             } catch (error) {
                 console.log(error);
@@ -176,7 +190,7 @@ function ParametersProfile({ userId, userName, userImage }) {
 
             <div className="Parameters-profile-pseudo">
                 <form className="Parameters-profile-pseudo-form" onSubmit={handleSubmitUsername}>
-                    <label className="Parameters-profile-pseudo-form-label" for="pseudo">Mon pseudo actuel : {userName}</label>
+                    <label className="Parameters-profile-pseudo-form-label" for="pseudo">Mon pseudo actuel : {profile?.userName}</label>
                     <div className="Parameters-profile-pseudo-form-container">
                         <input
                             className="Parameters-profile-pseudo-form-input"

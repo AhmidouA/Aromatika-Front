@@ -45,6 +45,21 @@ function Profile() {
                 setProfile(response.data);
                 toggleIsLoading(false);
                 console.log("DATA LE COMPONANT PROFILE", response.data);
+
+                // Mettre à jour le pseudonyme dans l'état local à partir du localStorage
+                const storedUsername = localStorage.getItem("username");
+                // Vérifie si un pseudonyme est stocké dans le localStorage
+                if (storedUsername) {
+                    // Met à jour l'état profile en utilisant la fonction setProfile
+                    // en copiant d'abord les valeurs précédentes (prevProfile) avec ...
+                    // puis en remplaçant userName par la valeur stockée localement (storedUsername)
+                    setProfile((prevProfile) => ({
+                        ...prevProfile, // Copie les valeurs précédentes de prevProfile
+                        userName: storedUsername // Remplace userName par storedUsername
+
+                    }))
+                }
+
             } catch (error) {
                 console.log(error);
             }
