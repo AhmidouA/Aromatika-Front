@@ -70,12 +70,16 @@ function ParametersProfile({ userId, userName, userImage }) {
     /**       Les states */
     // state profile
     const [profile, setProfile] = useState(null)
+
     // state pseudo depuis le profile
     const [pseudo, setPseudo] = useState("");
-    // state pseudoInput 
-    const [pseudoInputValue, setPseudoInputValue] = useState(""); 
+
+    // state pour stocker le pseudo du store et l'afficher 
+    const [usernameInStore, setUsernameInStore] = useState(""); 
     
 
+
+    
     /**       Les methode */
     // methode validation du from pour le changement du Pseudo
     const handleSubmitUsername = async (event) => {
@@ -141,12 +145,12 @@ function ParametersProfile({ userId, userName, userImage }) {
                 if (storedUsername) {
                     // Si storedUsername a une valeur, cela signifie qu'il y a un pseudonyme stocké dans le localStorage.
                     // Nous mettons alors à jour l'état local (state) 'pseudo' avec cette valeur.
-                    setPseudo(storedUsername);
+                    setUsernameInStore(storedUsername);
                 } else {
                     // Si storedUsername est null ou undefined, cela signifie qu'il n'y a pas de pseudonyme stocké dans le localStorage.
                     // Dans ce cas, nous utilisons le pseudonyme provenant de la réponse du serveur (response.data.userName).
                     // Nous mettons à jour l'état local (state) 'pseudo' avec cette valeur.
-                    setPseudo(response.data.userName);
+                    setUsernameInStore(response.data.userName);
                 }
                 
 
@@ -195,7 +199,7 @@ function ParametersProfile({ userId, userName, userImage }) {
 
             <div className="Parameters-profile-pseudo">
                 <form className="Parameters-profile-pseudo-form" onSubmit={handleSubmitUsername}>
-                    <label className="Parameters-profile-pseudo-form-label" for="pseudo">Mon pseudo actuel : {pseudo}</label>
+                    <label className="Parameters-profile-pseudo-form-label" for="pseudo">Mon pseudo actuel : {usernameInStore}</label>
                     <div className="Parameters-profile-pseudo-form-container">
                         <input
                             className="Parameters-profile-pseudo-form-input"
@@ -203,8 +207,8 @@ function ParametersProfile({ userId, userName, userImage }) {
                             id="pseudo"
                             name="pseudo"
                             placeholder="Entrer un nouveau pseudo"
-                            value={pseudoInputValue}
-                            onChange={(event) => setPseudoInputValue(event.target.value)}
+                            value={pseudo}
+                            onChange={(event) => setPseudo(event.target.value)}
                         />
                         <input className="Parameters-profile-pseudo-form-submit" type="submit" value="Valider" />
                     </div>

@@ -32,9 +32,16 @@ function Parameters() {
                 const authKey = localStorage.getItem('authKey');
                 const response = await axiosInstance.get(`/profile`, { headers: { Authorization: `Bearer ${authKey}` } });
                 console.log("response.data>>>>>", response.data)
+                toggleIsLoading(false);
+
+                // Mettre à jour uniquement le nom d'utilisateur
+                const storedUsername = localStorage.getItem("username");
+                if (storedUsername) {
+                response.data.userName = storedUsername;
+            }
                 setProfile(response.data);
 
-                toggleIsLoading(false);
+               
                 console.log("DATA", response.data);
             } catch (error) {
                 console.log(error);
