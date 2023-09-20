@@ -26,15 +26,22 @@ function Parameters() {
     useEffect(() => {
         const authKey = localStorage.getItem('authKey');
         setIsLoggedIn(authKey ? true : false);
-    }, []);
 
-    useEffect(() => {
         const fetchProfile = async () => {
             try {
                 const authKey = localStorage.getItem('authKey');
                 const response = await axiosInstance.get(`/profile`, { headers: { Authorization: `Bearer ${authKey}` } });
-                setProfile(response.data);
+                console.log("response.data>>>>>", response.data)
                 toggleIsLoading(false);
+
+                // Mettre à jour uniquement le nom d'utilisateur
+                const storedUsername = localStorage.getItem("username");
+                if (storedUsername) {
+                response.data.userName = storedUsername;
+            }
+                setProfile(response.data);
+
+               
                 console.log("DATA", response.data);
             } catch (error) {
                 console.log(error);
@@ -42,6 +49,8 @@ function Parameters() {
         };
         fetchProfile();
     }, []);
+
+    console.log("Profile Dans le Parent>>>>", profile)
 
     // TOGGLE
     // Pour garder en mémoire si mon toggle est "true" ou "false"

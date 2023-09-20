@@ -16,6 +16,8 @@ import LibraryPage from './pages/LibraryPage';
 import FavoritePage from './pages/FavoritePage';
 import AboutPage from './pages/AboutPage';
 import Error from './pages/ErrorPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Main />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/forgot-password' element={<ForgotPasswordPage />} />
+            <Route path='/forgot-password/:id/:token' element={<ResetPasswordPage />} />
             <Route path='/profil' element={<UserProfile />} />
             <Route path='/category/:id' element={<CategoryPage />} />
             <Route path='/oil/:id' element={<OilDetailsPage />} />

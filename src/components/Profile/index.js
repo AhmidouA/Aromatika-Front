@@ -1,5 +1,5 @@
 // -- Mes imports externes
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../../utils/axios';
@@ -32,10 +32,10 @@ function Profile() {
 
     // Pour récupérer les données de l'utilisateur et les afficher
     const [profile, setProfile] = useState(null);
-    console.log("FAVORIS", profile?.userFavorites);
 
     // Pour instaurer un loading lorsqu'on fait appel à l'API pour le chargement des données du profil
     const [isLoading, toggleIsLoading] = useState(true);
+
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -44,13 +44,30 @@ function Profile() {
                 const response = await axiosInstance.get(`/profile`, { headers: { Authorization: `Bearer ${authKey}` } });
                 setProfile(response.data);
                 toggleIsLoading(false);
-                console.log("DATA", response.data);
+                console.log("DATA LE COMPONANT PROFILE", response.data);
+
+                // Mettre à jour le pseudonyme dans l'état local à partir du localStorage
+                const storedUsername = localStorage.getItem("username");
+                // Vérifie si un pseudonyme est stocké dans le localStorage
+                if (storedUsername) {
+                    // Met à jour l'état profile en utilisant la fonction setProfile
+                    // en copiant d'abord les valeurs précédentes (prevProfile) avec ...
+                    // puis en remplaçant userName par la valeur stockée localement (storedUsername)
+                    setProfile((prevProfile) => ({
+                        ...prevProfile, // Copie les valeurs précédentes de prevProfile
+                        userName: storedUsername // Remplace userName par storedUsername
+
+                    }))
+                }
+
             } catch (error) {
                 console.log(error);
             }
         };
         fetchProfile();
     }, []);
+
+    console.log("profile dans le component Profile parent", profile)
 
     
 
@@ -75,11 +92,11 @@ function Profile() {
 
     // Récupération des huiles favorites nested (true)
     const filteredFavorite = profile?.userFavorites.filter((userFav) => userFav.favorite === true || userFav.favorite === null);
-    console.log("filteredFavorite", filteredFavorite);
+   
 
     // Récupération des huiles de l'aromathèque nested (true)
     const filteredLibrary = profile?.userAromatheques.filter((userFav) => userFav.aromatheque === true || userFav.aromatheque === null);
-    console.log("filteredLibrary", filteredLibrary);
+    
 
     // MON RENDU
     if (!isLoggedIn) {
@@ -148,4 +165,6 @@ function Profile() {
 }
 
 // -- Mon export
+// Memo ne recahrge pas le composant si on ajoute pas une nouvelle valeur
+// (Optimisation)
 export default Profile;

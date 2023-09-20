@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   Container,
   Form,
@@ -89,7 +89,15 @@ function Register() {
           navigate('/');
         }, 2500);
       } catch (error) {
-        console.log(error);
+        console.log("error dane le Register", error);
+        console.log("error message dane le Register", error )
+        if (error[0] === "Mot de passe invalide. Veuillez entrer un mot de passe valide.") {
+          return toast.error(`Votre mot de passe est invalide`);
+        } else if (error[0] === "Adresse email invalide. Veuillez entrer une adresse email valide.") {
+          return toast.error(`Votre adresse email invalide`);
+        } else if (error[0] === "utilisateur ou mot de passe incorrect") {
+          return toast.error(`Adresse mail ou mot de passe incorrect`)
+        }
         toast.error(`Erreur lors de la connexion en tant que ${formData.email}. Veuillez réessayer plus tard.`);
       }
     } else {
@@ -232,7 +240,7 @@ function Register() {
           </ValidationButton>
         </ButtonContainer>
       </Form>
-      {isLoginActive && <ForgotPasswordLink>Mot de passe oublié ?</ForgotPasswordLink>}
+      {isLoginActive && <Link to="/forgot-password">Mot de passe oublié ?</Link>}
     </Container>
   );
 }
