@@ -31,7 +31,7 @@ const ForgotPassword = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {         
-            const response = await axios.post('https://aromatika-back-api.onrender.com/profile/forgot-password', {
+            const response = await axios.post('https://aromatika-back.vercel.app/profile/forgot-password', {
                 email: email
                 });
 
