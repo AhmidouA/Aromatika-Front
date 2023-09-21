@@ -32,7 +32,7 @@ function About() {
                     <img className="About-profile-avatar" src={avatarA} />
                     <div className="About-profile-left-description-container">
                         <h2 className="About-profile-left-description-name">Ahmed</h2>
-                        <h3 className="About-profile-left-description-role">Lead dev back</h3>
+                        <h3 className="About-profile-left-description-role">Full Stack et Lead dev back</h3>
                         <p className="About-profile-left-description-resume">Passioné par la culture asiatique, les voyages et le code. Après plusieurs années en tant que chef de projet en E-commece, j'ai décidé de me reconvertir dans le développement web.</p>
                     </div>
                 </div>
