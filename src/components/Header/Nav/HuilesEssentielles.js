@@ -29,7 +29,7 @@ const HE = () => {
     const fetchCategories = async () => {
       try {
         const authKey = localStorage.getItem('authKey');
-        const response = await axios.get(`https://aromatika-back.vercel.app/categories/essential/`, { headers: { Authorization: `Bearer ${authKey}` } });
+        const response = await axios.get(`https://aromatika-back-api.onrender.com/categories/essential/`, { headers: { Authorization: `Bearer ${authKey}` } });
         setCategories(response);
         console.log("DATA", response);
       } catch (error) {
