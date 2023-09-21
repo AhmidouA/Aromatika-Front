@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://aromatika-back.vercel.app';
+const BASE_URL = 'https://aromatika-back-api.onrender.com';
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,

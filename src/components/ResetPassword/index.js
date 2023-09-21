@@ -33,7 +33,7 @@ const ResetPassword = () => {
   const validUser = async () => {
 
     try {
-        const response = await fetch(`https://aromatika-back.vercel.app/profile/reset-password/${id}/${token}`, {
+        const response = await fetch(`https://aromatika-back-api.onrender.com/profile/reset-password/${id}/${token}`, {
             method: "GET",
             headers: {
             "Content-Type": "application/json"
@@ -79,7 +79,7 @@ const ResetPassword = () => {
       try {
 
         console.log("Je suis ici au debut du try dans le Reset Password")
-        const response = await axios.post(`https://aromatika-back.vercel.app/profile/reset-password/${id}/${token}`, {
+        const response = await axios.post(`https://aromatika-back-api.onrender.com/profile/reset-password/${id}/${token}`, {
           password: password,
           confirmPassword: newPassword
         });
