@@ -89,7 +89,6 @@ function Register() {
           navigate('/');
         }, 2500);
       } catch (error) {
-        console.log("error dane le Register", error);
         console.log("error message dane le Register", error )
         if (error[0] === "Mot de passe invalide. Veuillez entrer un mot de passe valide.") {
           return toast.error(`Votre mot de passe est invalide`);
@@ -115,7 +114,7 @@ function Register() {
           formData.password,
           formData.confirmPassword
         );
-        console.log(response); // handle success response
+        // console.log(response); // handle success response
         toast.success('Compte créé avec succès !');
 
         // Redirect to the main page after one second

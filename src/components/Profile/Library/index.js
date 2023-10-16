@@ -16,7 +16,7 @@ function Library({ oil_id }) {
         const authKey = localStorage.getItem('authKey');
         const response = await axiosInstance.get(`/essential/${oil_id}`, { headers: { Authorization: `Bearer ${authKey}` } });
         setOil(response.data);
-        console.log("DATA", response.data);
+        // console.log("DATA", response.data);
       } catch (error) {
         console.log(error);
       }

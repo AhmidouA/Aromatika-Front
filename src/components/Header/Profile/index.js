@@ -86,7 +86,7 @@ const Profile = () => {
     navigate('/favoris');
   };
 
-  console.log("profile", profile)
+  // console.log("profile", profile)
 
   return (
     <div>

@@ -18,14 +18,14 @@ const ResetPassword = () => {
   /**       Les states */
   const [password, setPassword] = useState();
   const [newPassword, setNewPassword] = useState();
-  console.log("password dans le reset Password", password)
-  console.log("password dans le reset newPassword", newPassword)
+  // console.log("password dans le reset Password", password)
+  // console.log("password dans le reset newPassword", newPassword)
 
 
   /**       Les props */
   const {id, token} = useParams();
-  console.log("id dans le reset Password", id);
-  console.log("token dans le reset Passwordken", token);
+  // console.log("id dans le reset Password", id);
+  // console.log("token dans le reset Passwordken", token);
 
 
   /**       Les methode */
@@ -39,14 +39,14 @@ const ResetPassword = () => {
             "Content-Type": "application/json"
             }        
         });
-        console.log("response dans le Reset Password validUser",response)
+        // console.log("response dans le Reset Password validUser",response)
 
         const data = await response.json()
-        console.log("data dans le Reset Password validUser", data)
-        console.log("data dans le Reset Password validUser", data.message)
+        // console.log("data dans le Reset Password validUser", data)
+        // console.log("data dans le Reset Password validUser", data.message)
 
         if (response.status === 500 && data.error === "Erreur lors de la récupération du mot de passe") {
-          console.log("user No valid") 
+          // console.log("user No valid") 
           toast.error(`Erreur lors de la récupération. Veuillez vérifier votre boite mail`)
           setTimeout(() => {
             
@@ -54,7 +54,7 @@ const ResetPassword = () => {
         }, 3000); // 3seconde
 
         } else if (response.status === 400 && data.message === "Le compte n'existe pas") {         
-          console.log("user No valid") 
+          // console.log("user No valid") 
           toast.error(`Votre Compte n'existe pas, Veuillez vous inscrire.`)
           setTimeout(() => {
   
@@ -63,7 +63,7 @@ const ResetPassword = () => {
 
         } else {
           toast.success(`Votre pouvez modifier votre mot de passe.`)
-          console.log("user No valid")
+          // console.log("user No valid")
         };   
        
     } catch (error) {
@@ -78,7 +78,7 @@ const ResetPassword = () => {
 
       try {
 
-        console.log("Je suis ici au debut du try dans le Reset Password")
+        // console.log("Je suis ici au debut du try dans le Reset Password")
         const response = await axios.post(`https://aromatika-back-api.onrender.com/profile/reset-password/${id}/${token}`, {
           password: password,
           confirmPassword: newPassword

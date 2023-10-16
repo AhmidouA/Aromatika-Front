@@ -44,7 +44,7 @@ function Profile() {
                 const response = await axiosInstance.get(`/profile`, { headers: { Authorization: `Bearer ${authKey}` } });
                 setProfile(response.data);
                 toggleIsLoading(false);
-                console.log("DATA LE COMPONANT PROFILE", response.data);
+                // console.log("DATA LE COMPONANT PROFILE", response.data);
 
                 // Mettre à jour le pseudonyme dans l'état local à partir du localStorage
                 const storedUsername = localStorage.getItem("username");
@@ -67,7 +67,7 @@ function Profile() {
         fetchProfile();
     }, []);
 
-    console.log("profile dans le component Profile parent", profile)
+    // console.log("profile dans le component Profile parent", profile)
 
     
 

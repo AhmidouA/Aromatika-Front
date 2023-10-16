@@ -26,7 +26,7 @@ function Library() {
 
     // Pour récupérer les données de l'utilisateur et les afficher
     const [profile, setProfile] = useState(null);
-    console.log("AROMATHEQUE", profile?.userAromatheques);
+    // console.log("AROMATHEQUE", profile?.userAromatheques);
 
     // Pour instaurer un loading lorsqu'on fait appel à l'API pour le chargement des données du profil
     const [isLoading, toggleIsLoading] = useState(true);
@@ -38,7 +38,7 @@ function Library() {
                 const response = await axiosInstance.get(`/profile`, { headers: { Authorization: `Bearer ${authKey}` } });
                 setProfile(response.data);
                 toggleIsLoading(false);
-                console.log("DATA", response.data);
+                // console.log("DATA", response.data);
             } catch (error) {
                 console.log(error);
             }

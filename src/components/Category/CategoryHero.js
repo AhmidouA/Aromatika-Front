@@ -110,7 +110,7 @@ const getCategoryName = (categoryId) => {
 
 const CategoryHero = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const [category, setCategory] = useState(null);
 
   useEffect(() => {

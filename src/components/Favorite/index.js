@@ -26,7 +26,7 @@ function Library() {
 
     // Pour récupérer les données de l'utilisateur et les afficher
     const [profile, setProfile] = useState(null);
-    console.log("FAVORIS", profile?.userFavorites);
+    // console.log("FAVORIS", profile?.userFavorites);
 
     // Pour instaurer un loading lorsqu'on fait appel à l'API pour le chargement des données du profil
     const [isLoading, toggleIsLoading] = useState(true);
@@ -38,7 +38,7 @@ function Library() {
                 const response = await axiosInstance.get(`/profile`, { headers: { Authorization: `Bearer ${authKey}` } });
                 setProfile(response.data);
                 toggleIsLoading(false);
-                console.log("DATA", response.data);
+                // console.log("DATA", response.data);
             } catch (error) {
                 console.log(error);
             }
@@ -48,7 +48,7 @@ function Library() {
 
     // Récupération des huiles favorites uniquement
     const filteredFavorite = profile?.userFavorites.filter((userFav) => userFav.favorite === true);
-    console.log("FILTERED", filteredFavorite);
+    // console.log("FILTERED", filteredFavorite);
 
     // MON RENDU
     if (!isLoggedIn) {

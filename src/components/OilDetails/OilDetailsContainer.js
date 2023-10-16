@@ -270,8 +270,8 @@ const OilDetailsContainer = () => {
     fetchOil();
   }, [id]);
 
-  console.log("userId>>>>>>", userId)
-  console.log('ID>>>>>>>>>>>>>>>>>>> ', id);
+  // console.log("userId>>>>>>", userId)
+  // console.log('ID>>>>>>>>>>>>>>>>>>> ', id);
 
 
   // Handle favorite toggle function

@@ -25,7 +25,7 @@ function ParametersProfile({ userId, userName, userImage }) {
     /**       Les states */
     // Je récupère mon image envoyée par mon utilisateur et je la stocke dans file
     const [file, setFile] = useState('');
-    console.log("FILE", file);
+    // console.log("FILE", file);
 
 
     /**       Les methode */
@@ -94,7 +94,7 @@ function ParametersProfile({ userId, userName, userImage }) {
                     Authorization: `Bearer ${authKey}`,
                 },
             });
-            console.log("response Dans le handleSubmitUsername Params Profile", response)
+            // console.log("response Dans le handleSubmitUsername Params Profile", response)
 
              // On envoie un toast de succès après une modification réussie du mot de passe
              toast.success(`Votre Pseudo de profil a bien été modifié. 
@@ -102,7 +102,7 @@ function ParametersProfile({ userId, userName, userImage }) {
                             ＼(≧▽≦)／`);
 
 
-            console.log("response Dans le params", response.data)
+            // console.log("response Dans le params", response.data)
             localStorage.setItem('username', response.data.username)
             
 
@@ -135,7 +135,7 @@ function ParametersProfile({ userId, userName, userImage }) {
                     {headers: {Authorization: `Bearer ${authKey}`,},
                 });
 
-                console.log("useEffect Dans le params profile", response)
+                // console.log("useEffect Dans le params profile", response)
 
                 // Mettre à jour le pseudonyme dans l'état local à partir du localStorage
                 // On commence par récupérer la valeur stockée dans le localStorage avec la clé 'username'

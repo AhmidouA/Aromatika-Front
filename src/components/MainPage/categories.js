@@ -26,7 +26,7 @@ const Categories = () => {
                 const response = await axios.get(`https://aromatika-back-api.onrender.com/categories/essential/`, { headers: { Authorization: `Bearer ${authKey}` } });
                 setCategories(response);
                 toggleIsLoading(false);
-                console.log("DATA", response);
+                // console.log("DATA", response);
             } catch (error) {
                 console.log(error);
             }
