@@ -1,16 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+    <!-- Page d'accueil -->
+    <url>
+        <loc>https://aromatika-front.vercel.app/</loc>
+    </url>
 
-<url>
-  <loc>https://aromatika-front.vercel.app/</loc>
-  <lastmod>2023-10-16T13:32:28+00:00</lastmod>
-</url>
+    <!-- Page de connexion -->
+    <url>
+        <loc>https://aromatika-front.vercel.app/login</loc>
+    </url>
 
+    <!-- Page "Mot de passe oublié" -->
+    <url>
+        <loc>https://aromatika-front.vercel.app/forgot-password</loc>
+    </url>
+
+    <!-- Page "Réinitialisation du mot de passe" -->
+    <url>
+        <loc>https://aromatika-front.vercel.app/forgot-password/{id}/{token}</loc>
+    </url>
+
+    <!-- Page de profil de l'utilisateur -->
+    <url>
+        <loc>https://aromatika-front.vercel.app/profil</loc>
+    </url>
+
+    <!-- Page de catégorie -->
+    <url>
+        <loc>https://aromatika-front.vercel.app/category/{id}</loc>
+    </url>
+
+    <!-- Page de détails de l'huile -->
+    <url>
+        <loc>https://aromatika-front.vercel.app/oil/{id}</loc>
+    </url>
+
+    <!-- Page des paramètres de l'utilisateur -->
+    <url>
+        <loc>https://aromatika-front.vercel.app/parametres</loc>
+    </url>
+
+    <!-- Page des conditions d'utilisation -->
+    <url>
+        <loc>https://aromatika-front.vercel.app/utilisation</loc>
+    </url>
+
+    <!-- Page de la bibliothèque -->
+    <url>
+        <loc>https://aromatika-front.vercel.app/aromatheque</loc>
+    </url>
+
+    <!-- Page des favoris -->
+    <url>
+        <loc>https://aromatika-front.vercel.app/favoris</loc>
+    </url>
+
+    <!-- Page "À propos" -->
+    <url>
+        <loc>https://aromatika-front.vercel.app/a-propos</loc>
+    </url>
 
 </urlset>
