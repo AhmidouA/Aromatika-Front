@@ -27,11 +27,15 @@ function ParametersProfile({ userId, userName, userImage }) {
     const [file, setFile] = useState('');
     // console.log("FILE", file);
 
+    // pour visualiser la photo
+    const [picture, setPicture] = useState(null)
+
 
     /**       Les methode */
 
     // Pour récupérer l'image envoyée dans mon input du form "Profile Avatar"
     const handleImageChange = (event) => {
+        setPicture(URL.createObjectURL(event.target.files[0]));
         return setFile(event.target.files[0]);
     };
 
@@ -172,12 +176,13 @@ function ParametersProfile({ userId, userName, userImage }) {
                         <div className="Parameters-profile-avatar-form-plus-hover">                      
                             <img
                                 className="Parameters-profile-avatar-form-avatar-image"
+                                
                                 src={userImage ? `${process.env.REACT_APP_BASE_URL}/profile/picture/${userImage}` : avatar}
                                 alt="The avatar you downloaded"
                             />
                             <label htmlFor="avatar" className="Parameters-profile-avatar-form-plus-text">Changer d'avatar</label>
-                            {/* Le nom de la nouvelle image quand il telecharge */}
-                            <p>{file.name}</p>
+                            
+          
                             <input
                                 className="Parameters-profile-avatar-form-avatar-input"
                                 type="file"
@@ -191,8 +196,29 @@ function ParametersProfile({ userId, userName, userImage }) {
                                 type="submit"
                                 value="Valider"
                                 onClick={handleSubmitPicture}
-                            />
-                        </div>
+                            />                          
+                        </div>  
+                            {/* Pour visualiser la photo au avant de valider */}
+                            {/* Le nom de la nouvelle image quand il telecharge */}
+                            
+                            {picture !== null && (
+                            <div
+                                className="Parameters-profile-avatar-form-centered"
+                                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                                >
+                                
+                                <img
+                                className="Parameters-profile-avatar-form-avatar-image"
+                                style={{ maxWidth: '13rem',  maxHeight: '13rem'}}
+                                src={picture}
+                                alt="The avatar you downloaded"
+                                />
+                                 <br />
+                               
+                            </div>
+                             
+                            )}
+                            <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{file.name}</p>
                     </div>
                 </form>
             </div>
