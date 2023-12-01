@@ -94,7 +94,7 @@ const HE = () => {
               {toast.info(`Vous devez vous connecter ＼(≧▽≦)／`)}
               {setTimeout(() => {
               navigate('/login');
-              }, 2500)}
+              }, 3000)}
               {setShowList(!showList)}
             </>
           )}
