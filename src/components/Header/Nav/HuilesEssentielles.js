@@ -2,13 +2,19 @@ import React, { useRef, useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import "../styles.scss";
+import { useNavigate } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const HE = () => {
   const [showList, setShowList] = React.useState(false);
   const modalRef = useRef(null);
 
+  const navigate = useNavigate()
+
   const handleClick = () => {
-    setShowList(!showList);
+    setShowList(!showList);   
   };
 
   const handleOutsideClick = (event) => {
@@ -17,12 +23,17 @@ const HE = () => {
     }
   };
 
+
+
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick, true);
     return () => {
       document.removeEventListener('click', handleOutsideClick, true);
     };
   }, []);
+
+
+  
   const [categories, setCategories] = useState(null);
 
   useEffect(() => {
@@ -67,15 +78,27 @@ const HE = () => {
     <div>
       <a className='HE' onClick={handleClick}>Huiles essentielles</a>
       {showList && (
-        <ul ref={modalRef} className='HE-list'>
-
-          {categories && categories.data.map(category => (
-            <li  key={category.id} >
-              <a className="HE-list-links" href={`/category/${category.id}`}>
-                {getCategoryName(category.id)}
-              </a>
-            </li>))}
-        </ul>
+        <div>
+          {categories && categories.data ? (
+            <ul ref={modalRef} className='HE-list'>
+              {categories.data.map(category => (
+                <li key={category.id} >
+                  <a className="HE-list-links" href={`/category/${category.id}`}>
+                    {getCategoryName(category.id)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <>
+              {toast.info(`Vous devez vous connecter ＼(≧▽≦)／`)}
+              {setTimeout(() => {
+              navigate('/login');
+              }, 2500)}
+              {setShowList(!showList)}
+            </>
+          )}
+        </div>
       )}
     </div>
   );

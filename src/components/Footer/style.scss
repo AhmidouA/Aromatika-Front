@@ -161,6 +161,8 @@
 
       &:hover .Footer-social-logo {
         color: #ffd7d0;
+        transform: scale(1.5);
+        z-index: 2;
       }
 
       .Footer-social-logo {

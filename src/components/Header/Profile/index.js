@@ -15,6 +15,10 @@ const Profile = () => {
   const [imageProfil, setimageProfil] = useState(null)
   const [file, setFile] = useState('');
 
+
+  // Gestion des redirections du profil lorsqu'un utilisateur est connecté
+  const navigate = useNavigate();
+
   // User Data (Profile)
   useEffect(() => {
     const fetchProfile = async () => {
@@ -38,6 +42,7 @@ const Profile = () => {
   const handleClick = (event) => {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
       setIsOpen(false);
+      navigate('/login')
     }
   };
 
@@ -45,7 +50,9 @@ const Profile = () => {
     document.addEventListener('mousedown', handleClick, false);
     return () => {
       document.removeEventListener('mousedown', handleClick, false);
+      
     };
+    
   }, []);
 
   useEffect(() => {
@@ -57,8 +64,7 @@ const Profile = () => {
     setIsOpen(!isOpen);
   };
 
-  // Gestion des redirections du profil lorsqu'un utilisateur est connecté
-  const navigate = useNavigate();
+  
 
   const handleLogout = () => {
     localStorage.removeItem('authKey'); // remove toekn from LocalStorage
