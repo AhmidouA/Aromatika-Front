@@ -6,12 +6,7 @@ import axios from 'axios';
 const Categories = () => {
 
     const [categories, setCategories] = useState(null);
-
-    // On ajoute un state pour gérer le temps d'attente avec l'appel API
     const [isLoading, toggleIsLoading] = useState(true);
-
-    // Mon spinner s'affiche si l'utilisateur n'est pas connecté
-    // On ajoute une condition pour que le spinner ne s'affiche pas si l'utilisateur n'est pas connecté
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {

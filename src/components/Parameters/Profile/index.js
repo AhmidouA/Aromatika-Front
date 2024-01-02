@@ -13,17 +13,6 @@ import avatar from "../avatar.jpg";
 function ParametersProfile({ userId, userName, userImage }) {
     const navigate = useNavigate();
 
-
-    // ROUTES BACK
-    // router.post(‘/profile/picture/:id’, auth.checkToken, upload.single(‘image’), userController.addPicture);
-    // router.get(‘/profile/picture/:file’, userController.streamPicture);
-
-    // PLAN Image
-    // 1 - Si l'utilisateur veut changer de photo, je dois récupérer la photo
-    // 2 - Et envoyer la photo en post
-
-    /**       Les states */
-    // Je récupère mon image envoyée par mon utilisateur et je la stocke dans file
     const [file, setFile] = useState('');
     // console.log("FILE", file);
 
@@ -32,15 +21,11 @@ function ParametersProfile({ userId, userName, userImage }) {
 
 
     /**       Les methode */
-
-    // Pour récupérer l'image envoyée dans mon input du form "Profile Avatar"
     const handleImageChange = (event) => {
         setPicture(URL.createObjectURL(event.target.files[0]));
         return setFile(event.target.files[0]);
     };
 
-
-    // Pour envoyer l'image en post lors du clic du bouton envoyé
     const handleSubmitPicture = async (event) => {
         event.preventDefault();
         try {
@@ -48,13 +33,10 @@ function ParametersProfile({ userId, userName, userImage }) {
             formData.append('image', file);
 
             const response = await axiosInstance.post(`/profile/picture/${userId}`, formData);
-            // console.log("response Depuis les param pour la photo", response)
             setFile('');
 
-            // On envoie un toast de succès
             toast.success(`Votre photo de profil a été changée avec succès ＼(≧▽≦)／`);
 
-            // On redirige vers la page profil après une seconde
             setTimeout(() => {
                 navigate('/profil');
             }, 2500);
@@ -65,27 +47,19 @@ function ParametersProfile({ userId, userName, userImage }) {
     };
 
 
-    // PLAN Update userName
-
     /**       Les props */
     const id = userId;
 
 
     /**       Les states */
-    // state profile
     const [profile, setProfile] = useState(null)
-
-    // state pseudo depuis le profile
     const [pseudo, setPseudo] = useState("");
-
-    // state pour stocker le pseudo du store et l'afficher 
     const [usernameInStore, setUsernameInStore] = useState(""); 
     
 
 
     
     /**       Les methode */
-    // methode validation du from pour le changement du Pseudo
     const handleSubmitUsername = async (event) => {
         event.preventDefault();
 
@@ -98,27 +72,18 @@ function ParametersProfile({ userId, userName, userImage }) {
                     Authorization: `Bearer ${authKey}`,
                 },
             });
-            // console.log("response Dans le handleSubmitUsername Params Profile", response)
-
-             // On envoie un toast de succès après une modification réussie du mot de passe
-             toast.success(`Votre Pseudo de profil a bien été modifié. 
+                toast.success(`Votre Pseudo de profil a bien été modifié. 
                             Lors de votre prochaine connexion votre pseudo sera mis à jour   
                             ＼(≧▽≦)／`);
 
-
-            // console.log("response Dans le params", response.data)
             localStorage.setItem('username', response.data.username)
             
-
-
-            // On redirige vers la page profil après une seconde
             setTimeout(() => {
             navigate('/profil');
-            }, 5000); // 2seconde
+            }, 5000); 
 
         } catch(error) {
             console.log(error);
-            // console.log("error.response.message.data>>>>", error.response.data.message)
             if (error.response.data.message = "Ce nom d'utilisateur est déjà pris") {
                 toast.error('Ce Pseudo est déjà pris');
             } else {
@@ -132,28 +97,14 @@ function ParametersProfile({ userId, userName, userImage }) {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                // localStorage pour le token
                 const authKey = localStorage.getItem('authKey');
-                // response avec l'autorisation du token
                 const response = await axiosInstance.get(`/profile`, 
                     {headers: {Authorization: `Bearer ${authKey}`,},
                 });
-
-                // console.log("useEffect Dans le params profile", response)
-
-                // Mettre à jour le pseudonyme dans l'état local à partir du localStorage
-                // On commence par récupérer la valeur stockée dans le localStorage avec la clé 'username'
                 const storedUsername = localStorage.getItem('username');
-
-                // On vérifie si storedUsername a une valeur (c'est-à-dire qu'elle n'est pas null ou undefined)
                 if (storedUsername) {
-                    // Si storedUsername a une valeur, cela signifie qu'il y a un pseudonyme stocké dans le localStorage.
-                    // Nous mettons alors à jour l'état local (state) 'pseudo' avec cette valeur.
                     setUsernameInStore(storedUsername);
                 } else {
-                    // Si storedUsername est null ou undefined, cela signifie qu'il n'y a pas de pseudonyme stocké dans le localStorage.
-                    // Dans ce cas, nous utilisons le pseudonyme provenant de la réponse du serveur (response.data.userName).
-                    // Nous mettons à jour l'état local (state) 'pseudo' avec cette valeur.
                     setUsernameInStore(response.data.userName);
                 }
                 

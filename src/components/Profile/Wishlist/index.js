@@ -7,12 +7,7 @@ import axiosInstance from '../../../utils/axios';
 
 // -- Mon composant
 function Wishlist({ oil_id }) {
-    // PLAN
-    // 1 - Je dois récupérer les noms des huiles et les images grâce aux ids passés en props
-    // 2 - Mettre les infos des 3 huiles dans mon state "oils"
-    // 3 - Dynamiser ma div avec les infos contenus dans mon state "oils"
 
-    // Pour récupérer les données des huiles et les afficher
     const [oil, setOil] = useState(null);
 
     useEffect(() => {

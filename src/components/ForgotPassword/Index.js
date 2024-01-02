@@ -16,26 +16,17 @@ import {Container, Form, FormGroup, FormInput, ValidationButton} from '../Regist
 const ForgotPassword = () => {
 
     const navigate = useNavigate();
-
-    /**       Les props */ 
-    
-
-    /**       Les states */
-    // Email
     const [email, setEmail] = useState();
 
 
 
     /**       Les methode */
-    // validation du formulaire envoi de mail
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {         
             const response = await axios.post('https://aromatika-back-api.onrender.com/profile/forgot-password', {
                 email: email
                 });
-
-            // On envoie un toast de succès après une vérification du mail
             toast.success(`L'email est parti. Veuillez vérifier votre boîte mail ${email}. ＼(≧▽≦)／`);
 
             setTimeout(() => {
