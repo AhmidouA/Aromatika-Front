@@ -49,14 +49,11 @@ function ParametersPassword({ userMail }) {
     // profil scroller
     useScrollTop();
 
-    // Gestion des redirections du profil lorsqu'un utilisateur est connecté
     const navigate = useNavigate();
 
-    // state pour voir son mot de passe taper
     const [oldPasswordIsVisible, setOldPasswordIsVisible] = useState(false);
     const [newPasswordIsVisible, setNewPasswordIsVisible] = useState(false);
 
-    // state data User
     const [profile, setProfile] = useState(null)
     const [userId, setUserId] = useState(null);
     // console.log("userId dans Password >>>>>>", userId)
@@ -110,26 +107,21 @@ function ParametersPassword({ userMail }) {
         event.preventDefault();
     
         try {
-
-          // je passe mes state dans le cors de ma requet comme dans handleFavoriteToggle(oilDetailContainer)(params + body)
           const response = await axiosInstance.put(`/profile/password/${id}`, {
             oldPassword: oldPassword,
             password: newPassword,
             confirmPassword: newPasswordConfirm
           });
-          //console.log("response Pour le Password", response);
-    
-          // On envoie un toast de succès après une modification réussie du mot de passe
+
           toast.success(`Votre mot de passe a bien été modifié avec succès ＼(≧▽≦)／`);
     
-          // On redirige vers la page profil après une seconde
           setTimeout(() => {
             navigate('/profil');
           }, 2000); // 2seconde
     
         } catch (error) {
           console.log(error);
-          //console.log("error.response.message.data>>>>", error.response.data.message)
+
           if (error.response.data.message === 'Mot de passe incorrect') {
             toast.error('Votre ancien mot de passe est incorrect.');
 
@@ -143,8 +135,6 @@ function ParametersPassword({ userMail }) {
             toast.error('Erreur lors de la modification du mot de passe. Veuillez réessayer plus tard.');
           }
         }
-
-        // réinitialiser les champs de mot de passe
         setOldPassword("");
         setNewPassword("");
         setNewPasswordConfirm("");

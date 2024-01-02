@@ -15,8 +15,7 @@ import Spinner from "../Spinner";
 
 // -- Mon composant
 function Library() {
-    // Pour vérifier que mon utilisateur est bien connecté
-    // Si l'utilisateur n'est pas connecté, on ne montre pas la page profil
+
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -24,11 +23,8 @@ function Library() {
         setIsLoggedIn(authKey ? true : false);
     }, []);
 
-    // Pour récupérer les données de l'utilisateur et les afficher
     const [profile, setProfile] = useState(null);
-    // console.log("FAVORIS", profile?.userFavorites);
 
-    // Pour instaurer un loading lorsqu'on fait appel à l'API pour le chargement des données du profil
     const [isLoading, toggleIsLoading] = useState(true);
 
     useEffect(() => {
@@ -46,11 +42,8 @@ function Library() {
         fetchProfile();
     }, []);
 
-    // Récupération des huiles favorites uniquement
     const filteredFavorite = profile?.userFavorites.filter((userFav) => userFav.favorite === true);
-    // console.log("FILTERED", filteredFavorite);
 
-    // MON RENDU
     if (!isLoggedIn) {
         return <Error />;
     }

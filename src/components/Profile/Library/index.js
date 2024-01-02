@@ -7,7 +7,7 @@ import axiosInstance from '../../../utils/axios';
 
 // -- Mon composant
 function Library({ oil_id }) {
-  // Pour récupérer les données des huiles et les afficher
+
   const [oil, setOil] = useState(null);
 
   useEffect(() => {
@@ -38,5 +38,4 @@ function Library({ oil_id }) {
   );
 }
 
-// -- Mon export
 export default Library;

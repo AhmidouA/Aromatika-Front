@@ -41,5 +41,4 @@ function About() {
   );
 }
 
-// -- Mon export
 export default About;

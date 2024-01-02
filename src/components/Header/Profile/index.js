@@ -15,11 +15,8 @@ const Profile = () => {
   const [imageProfil, setimageProfil] = useState(null)
   const [file, setFile] = useState('');
 
-
-  // Gestion des redirections du profil lorsqu'un utilisateur est connecté
   const navigate = useNavigate();
 
-  // User Data (Profile)
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -67,13 +64,12 @@ const Profile = () => {
   
 
   const handleLogout = () => {
-    localStorage.removeItem('authKey'); // remove toekn from LocalStorage
+    localStorage.removeItem('authKey'); // remove token from LocalStorage
     localStorage.removeItem('username'); // remove username from LocalStorage
     localStorage.removeItem('userId'); // remove userId from LocalStorage
     setIsLoggedIn(false);
     toast.success('Vous avez été déconnecté avec succès !');
 
-    // On redirige vers la page profil après une seconde
     setTimeout(() => {
       navigate('/');
     }, 2500);
@@ -92,7 +88,6 @@ const Profile = () => {
     navigate('/favoris');
   };
 
-  // console.log("profile", profile)
 
   return (
     <div>
