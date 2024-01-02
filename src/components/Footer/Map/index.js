@@ -47,5 +47,5 @@ function Map() {
   );
 }
 
-// -- Mon export
+
 export default Map;
